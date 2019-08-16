@@ -89,6 +89,12 @@
 		SEND_SIGNAL(I, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
 		dtype = I.damtype
 
+		if(isliving(I.thrownby))
+			var/mob/living/L = I.thrownby
+			lastattacker = L.real_name
+			if(L.ckey)
+				lastattackerckey = L.ckey
+
 		if (I.throwforce > 0) //If the weapon's throwforce is greater than zero...
 			if (I.throwhitsound) //...and throwhitsound is defined...
 				playsound(loc, I.throwhitsound, volume, 1, -1) //...play the weapon's throwhitsound.
